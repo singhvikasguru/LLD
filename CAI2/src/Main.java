@@ -58,9 +58,9 @@ public class Main {
         int mat[][]= new int[n][m];
         int res[][]= new int[n][m];
         int des[][]= new int[n][m];
-        mat[0][0]=1;
-        mat[0][1]=1;
-        mat[0][2]=1;
+        mat[0][0]=2;
+        mat[0][1]=2;
+        mat[0][2]=2;
         mat[0][3]=1;
         mat[1][0]=1;
         mat[1][1]=1;
