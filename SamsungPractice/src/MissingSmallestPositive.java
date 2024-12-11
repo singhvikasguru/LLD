@@ -23,7 +23,7 @@
  *
  */
 
-/
+
 import java.util.Scanner;
 
 public class MissingSmallestPositive {
@@ -44,8 +44,24 @@ public class MissingSmallestPositive {
             }
             if(pos==0)
                 System.out.println(1);
+            if(pos==size)
+                System.out.println(size+1);
 
-            
+            boolean visited[]= new boolean[size];
+            for(int i=0;i<size;i++)
+            {
+                if(arr[i]>0)
+                    visited[arr[i]-1]=true;
+            }
+            for(int i=0;i<size;i++)
+            {
+                if(visited[i]==false)
+                {
+                    System.out.println(i+1);
+                    break;
+                }
+
+            }
 
         }
     }
