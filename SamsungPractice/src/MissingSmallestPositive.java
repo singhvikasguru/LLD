@@ -27,6 +27,61 @@
 import java.util.Scanner;
 
 public class MissingSmallestPositive {
+    public static int movePositives(int arr[])
+    {
+        int posIndex=0;
+        for(int i=0;i<arr.length;i++)
+        {
+            if(arr[i]>0)
+            {
+                int temp=arr[i];
+                arr[i]=arr[posIndex];
+                arr[posIndex]=temp;
+                posIndex++;
+            }
+
+        }
+        return posIndex;
+    }
+    public static int findMin(int arr[], int posIndex)
+    {
+        for(int i=0;i<posIndex;i++)
+        {
+            int val=Math.abs(arr[i]);
+            if(val-1<posIndex && arr[val-1]>0)
+                arr[val-1]*=-1;
+        }
+
+        for(int i=0;i<posIndex;i++)
+            if(arr[i]>0)
+            {
+                return i+1;
+            }
+        return posIndex+1;
+    }
+
+    public static int findMinOn(int arr[])
+    {
+        int size=arr.length;
+        boolean visited[]= new boolean[size];
+        for(int i=0;i<size;i++)
+        {
+            if(arr[i]>0)
+                visited[arr[i]-1]=true;
+        }
+//        for(int i=0;i<size;i++)
+//            System.out.print(visited[i]+" ");
+        for(int i=0;i<size;i++)
+        {
+            if(visited[i]==false)
+            {
+                return i+1;
+            }
+
+        }
+        return size+1;
+    }
+
     public static void main(String args[])
     {
         Scanner sc= new Scanner(System.in);
@@ -44,24 +99,10 @@ public class MissingSmallestPositive {
             }
             if(pos==0)
                 System.out.println(1);
-            if(pos==size)
-                System.out.println(size+1);
 
-            boolean visited[]= new boolean[size];
-            for(int i=0;i<size;i++)
-            {
-                if(arr[i]>0)
-                    visited[arr[i]-1]=true;
-            }
-            for(int i=0;i<size;i++)
-            {
-                if(visited[i]==false)
-                {
-                    System.out.println(i+1);
-                    break;
-                }
-
-            }
+            int posIndex=movePositives(arr);
+            System.out.println(findMinOn(arr));
+            System.out.println(findMin(arr, posIndex));
 
         }
     }
