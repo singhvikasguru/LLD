@@ -105,7 +105,7 @@ public class Wormhole {
 
             for(int j=0;j<points;j++)
             {
-                if(!inSet[j] && distance[v][i]!=-1 && minDist[v]!=Integer.MAX_VALUE && minDist[j]>minDist[v]+distance[v][j])
+                if(!inSet[j] && minDist[j]>minDist[v]+distance[v][j])
                     minDist[j]=minDist[v]+distance[v][j];
             }
         }
